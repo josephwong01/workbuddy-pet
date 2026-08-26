@@ -32,4 +32,6 @@ PyInstaller.__main__.run([
     "--collect-submodules=pystray",
     "--collect-submodules=PIL",
     "--log-level", "WARN",
+    # 应用图标（资源管理器 / 任务栏 / 托盘）
+    f"--icon={os.path.join(ASSETS, 'icon', 'app_icon.ico')}",
 ])

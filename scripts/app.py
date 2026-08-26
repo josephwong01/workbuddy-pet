@@ -120,7 +120,33 @@ def _read_pid():
 # 托盘图标
 # --------------------------------------------------------------------------
 def make_tray_icon():
-    from PIL import Image, ImageDraw
+    """优先加载打包进 exe 的 logo 图标；找不到则回退到程序绘制的绿色小熊。"""
+    from PIL import Image
+    # 尝试加载内置图标（PyInstaller 打包后位于 _MEIPASS/assets/icon/）
+    icon_candidates = [
+        asset_path(os.path.join("assets", "icon", "app_icon.ico")),
+        asset_path(os.path.join("assets", "icon", "logo_clean.png")),
+        os.path.join(PROJECT_DIR, "assets", "icon", "app_icon.ico"),
+        os.path.join(PROJECT_DIR, "assets", "icon", "logo_clean.png"),
+    ]
+    for path in icon_candidates:
+        if os.path.isfile(path):
+            try:
+                img = Image.open(path).convert("RGBA")
+                img.thumbnail((64, 64), Image.Resampling.LANCZOS)
+                if img.size != (64, 64):
+                    canvas = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+                    offset = ((64 - img.size[0]) // 2, (64 - img.size[1]) // 2)
+                    canvas.paste(img, offset)
+                    img = canvas
+                print(f"[tray] Loaded icon: {path} -> {img.size}")
+                return img
+            except Exception as e:
+                print(f"[tray] Failed to load {path}: {e}")
+                continue
+
+    # 回退：程序绘制绿色小熊
+    from PIL import ImageDraw
     img = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     d.rounded_rectangle([8, 16, 56, 60], radius=14, fill=(34, 139, 34, 255),
@@ -129,6 +155,7 @@ def make_tray_icon():
         d.ellipse([cx - 7, 24, cx + 7, 38], fill=(255, 255, 255, 255))
         d.ellipse([cx - 3, 27, cx + 3, 33], fill=(15, 15, 15, 255))
     d.rounded_rectangle([28, 40, 36, 50], radius=3, fill=(212, 175, 55, 255))
+    print("[tray] Using fallback drawn bear icon")
     return img
 
 
