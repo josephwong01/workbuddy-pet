@@ -40,4 +40,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon=['C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/assets/icon/app_icon.ico'],
 )

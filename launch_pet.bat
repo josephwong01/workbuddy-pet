@@ -1,5 +1,5 @@
 @echo off
-REM Launch Desktop Pet (WorkBuddy-pet)
-REM Uses the project's venv python so tkinter + Pillow are available.
+REM Launch WorkBuddy Pet - Tkinter EXE version (smooth, draggable, built-in WorkBuddy integration)
+REM Replaces the old PetDex-based pet_launch.py launcher.
 cd /d "%~dp0"
-"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/.venv/Scripts/python.exe" scripts\pet_launch.py
+start "" "%~dp0dist\workbuddy-pet.exe"
