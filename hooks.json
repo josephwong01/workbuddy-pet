@@ -1,0 +1,72 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/.venv/Scripts/python.exe\" \"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/scripts/petdex_bridge.py\" thinking \"正在思考...\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/.venv/Scripts/python.exe\" \"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/scripts/petdex_bridge.py\" thinking \"正在思考...\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/.venv/Scripts/python.exe\" \"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/scripts/petdex_bridge.py\" running \"工作中...\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/.venv/Scripts/python.exe\" \"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/scripts/petdex_bridge.py\" waving \"完成！\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/.venv/Scripts/python.exe\" \"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/scripts/petdex_bridge.py\" idle",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/.venv/Scripts/python.exe\" \"C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/scripts/launch_wb_pet.py\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

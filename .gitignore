@@ -1,0 +1,24 @@
+# ---- Build artifacts ----
+build/
+build_bak*/
+dist/
+*.spec.bak
+workbuddy-pet.spec.bak
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+
+# ---- Local working / output ----
+output/
+*.bak
+*.bak.exe
+
+# ---- Editor / OS ----
+.DS_Store
+.vscode/
+.idea/
+Thumbs.db

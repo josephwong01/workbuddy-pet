@@ -1,0 +1,6 @@
+# WorkBuddy Pet - 运行与构建依赖
+# tkinter 在 Windows / macOS 上随 Python 自带，PyInstaller 会一并打包；
+# Linux 需额外安装系统包：sudo apt install python3-tk
+Pillow>=10.0.0
+pystray>=0.19.0
+PyInstaller>=6.0.0
