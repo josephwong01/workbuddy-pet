@@ -235,7 +235,9 @@ def start_pet():
     scale = cfg.get("scale", 1.3)
     PET = WBPet(atlas, manifest, scale, C.STATE_FILE, chat_aware=cfg.get("chat_aware", True))
     PET_ROOT = PET.root
-    threading.Thread(target=PET.run, daemon=True).start()
+    # 注意：不要在这里启动线程跑 PET.run()！
+    # Tkinter 的 mainloop 必须在主线程运行（Windows COM apartment 限制），
+    # 由调用方（run_mode）在主线程中调用 PET.run()。
     return True
 
 
@@ -282,8 +284,18 @@ def run_mode():
     global TRAY_ICON
     TRAY_ICON = pystray.Icon("workbuddy-pet", make_tray_icon(), "WorkBuddy 宠物")
     TRAY_ICON.menu = build_tray_menu()
-    # 托盘在主线程运行；宠物 Tk 在子线程
-    TRAY_ICON.run()
+
+    # 关键修复：Windows 上 Tkinter 的 mainloop 必须在主线程运行
+    # （COM apartment 限制），否则报 "Calling Tcl from different apartment"。
+    # 所以：托盘图标放后台线程，宠物 Tkinter 窗口放主线程。
+    def _run_tray():
+        TRAY_ICON.run()
+
+    threading.Thread(target=_run_tray, daemon=True).start()
+
+    # 主线程跑宠物窗口（Tkinter mainloop 必须在主线程）
+    if PET:
+        PET.run()
 
 
 def daemon_reachable():
