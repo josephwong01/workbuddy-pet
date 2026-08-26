@@ -1,8 +1,6 @@
 # WorkBuddy Pet · 桌面宠物
 
-把 Codex / Claude Code 同款的「动画桌面宠物」搬进 WorkBuddy。宠物常驻桌面、可拖拽、随 AI 工作状态实时切换动画，并支持**用一张静态图 DIY 自己的宠物**，打包成单文件 EXE 分享给任何人。
-
-> 内置示例宠物：**IP 熊**（科技感 PCB 吉祥物），已随 EXE 打包。
+把 Codex / Claude Code 同款的「动画桌面宠物」搬进 WorkBuddy。宠物常驻桌面、可拖拽、随 AI 工作状态实时切换动画，并支持**用一张静态图 DIY 自己的宠物**。
 
 ## 功能特性
 
