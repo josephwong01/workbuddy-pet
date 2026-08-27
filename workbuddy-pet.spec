@@ -1,17 +1,12 @@
 # -*- mode: python ; coding: utf-8 -*-
-from PyInstaller.utils.hooks import collect_submodules
-
-hiddenimports = ['pystray', 'PIL', 'PIL.Image', 'PIL.ImageTk', 'PIL.ImageDraw', 'tkinter', 'tkinter.ttk', 'http.server', 'urllib.request']
-hiddenimports += collect_submodules('pystray')
-hiddenimports += collect_submodules('PIL')
 
 
 a = Analysis(
-    ['C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/scripts/app.py'],
-    pathex=['C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/scripts'],
+    ['scripts/app.py'],
+    pathex=[],
     binaries=[],
-    datas=[('C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/assets', 'assets')],
-    hiddenimports=hiddenimports,
+    datas=[('assets', 'assets')],
+    hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -40,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['C:/Users/win/WorkBuddy/2026-08-25-11-10-41/WorkBuddy-pet/assets/icon/app_icon.ico'],
+    icon=['assets/icon/app_icon.ico'],
 )
